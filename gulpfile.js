@@ -15,6 +15,8 @@ var browserSync = require('browser-sync').create();
 var del = require('del');
 var runSequence = require('run-sequence');
 var vinylFtp = require('vinyl-ftp');
+var argv = require('yargs').argv;
+
 
 /**
 * Gulpfile for scrum.cards project
@@ -25,9 +27,8 @@ var vinylFtp = require('vinyl-ftp');
 * - use 'gulp dist:nocache' to clear the cache and do the above 'gulp dist' at once
 *
 * Deploying commands:
-* - use 'gulp deploy:test' to deploy the dist folder to the root folder of the specified ftp server with credentials
-* - use 'gulp deploy:prod' to deploy the dist folder to the root folder of the specified ftp server with credentials, 
-		ours are different for prod (task asks if you are sure too ;))
+* - use 'gulp deploy' to deploy the dist folder to the root folder of the specified ftp server, defined in credentials.json. 
+* 		In the default credentials file and this task currently, --test and --prod are supported as parameters i.e. 'gulp deploy --test'
 * - use 'gulp open:test' to open test url, http://test.scrum.cards in our case
 * - use 'gulp open:prod' to open prod url, http://scrum.cards in our case
 **/
@@ -130,38 +131,55 @@ gulp.task('dist:nocache', function (callback) {
 });
 
 /**
-* This task deploys the 'dist' folder to the test server
+* This task deploys the 'dist' folder to an ftp server defined in the credentials.json.
+* Call this task with the argument --test or --prod
 */
-gulp.task('deploy:test', function() {
-    var conn = vinylFtp.create({
-        host:     '',
-        user:     '',
-        password: '',
-        parallel: 3,
-        log:      gulpUtil.log
-    });
+gulp.task('deploy', function() {
+	
+	try {
+		var creds = require('./credentials.json');
+	} catch (e) {
+		if (e instanceof Error && e.code === "MODULE_NOT_FOUND") {
+			console.log("ERROR: The file credentials.json does not exist, make sure it does (see github for explanation)!");
+			return;
+		}
+	}
+	
+	if(argv.test) {
+		if(creds && creds.test && creds.test.host && creds.test.user && creds.test.pass) {
+			var conn = vinylFtp.create({
+				host:     creds.test.host,
+				user:     creds.test.user,
+				password: creds.test.pass,
+				parallel: 3,
+				log:      gulpUtil.log
+			});
+		} else {
+			console.log("ERROR: Could not find 'test' array or host/user/pass in 'test' array in the credentials.json.");
+			return;
+		}
+	} else if (argv.prod) {
+		if(creds && creds.test && creds.test.host && creds.test.user && creds.test.pass) {
+			var conn = vinylFtp.create({
+				host:     creds.prod.host,
+				user:     creds.prod.user,
+				password: creds.prod.pass,
+				parallel: 3,
+				log:      gulpUtil.log
+			});
+		} else {
+			console.log("ERROR: Could not find 'prod' array or host/user/pass in 'prod' array in the credentials.json.");
+			return;
+		}
+	} else {
+		console.log("ERROR: No command has been given! Options are: 'gulp deploy --test' and 'gulp deploy --prod' by default.");
+		return;
+	}
 	
     return gulp.src(['dist/**'], { base: './dist/', buffer: false })
-        .pipe( conn.newer('/') )
-        .pipe( conn.dest('/') );
-});
-
-/**
-* This task deploys the 'dist' folder to the test server
-*/
-gulp.task('deploy:prod', function() {
-    var conn = vinylFtp.create({
-        host:     '',
-        user:     '',
-        password: '',
-        parallel: 3,
-        log:      gulpUtil.log
-    });
-	
-    return gulp.src(['dist/**'], { base: './dist/', buffer: false })
-		.pipe(gulpPrompt.confirm('Are you sure you want to deploy to prod?'))
-        .pipe( conn.newer('/'))
-        .pipe( conn.dest('/'));
+		.pipe(gulpIf(argv.prod, gulpPrompt.confirm('Are you sure you want to deploy to prod?')))
+        .pipe(conn.newer('/') )
+        .pipe(conn.dest('/') );
 });
 
 /**
