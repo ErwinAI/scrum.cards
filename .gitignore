@@ -21,4 +21,4 @@ jspm_packages
 dist
 
 # Credentials
-credentials.txt
+credentials.json
