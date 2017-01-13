@@ -15,8 +15,11 @@
   ],
   "main": "index.js",
   "scripts": {
+    "clean": "rimraf ./dist",
+    "copy": "mkdirp ./dist; ncp ./app/index.html ./dist/index.html/",
+    "prebuild": "npm run clean; npm run copy",
     "build": "webpack --config webpack.config.js",
-	"build:live": "webpack-dev-server -d --port 3000 --content-base ./dist/ --config webpack.config.js"
+    "build:live": "webpack-dev-server -d --port 3000 --content-base ./dist/ --config webpack.config.js"
   },
   "keywords": [
     "scrum",
@@ -47,15 +50,18 @@
     "gulp-util": "^3.0.8",
     "image-webpack-loader": "^3.1.0",
     "imagemin-cli": "^3.0.0",
+    "mkdirp": "^0.5.1",
+    "ncp": "^2.0.0",
     "node-sass": "^4.2.0",
     "path": "^0.12.7",
+    "rimraf": "^2.5.4",
     "run-sequence": "^1.2.2",
     "sass-loader": "^4.1.1",
     "style-loader": "^0.13.1",
     "vinyl-ftp": "^0.5.0",
     "webpack": "2.2.0-rc.4",
     "webpack-dev-server": "^2.2.0-rc.0",
-	"yargs": "^6.6.0"
+    "yargs": "^6.6.0"
   },
   "engines": {
     "node": ">=4.4.5",
