@@ -22,3 +22,6 @@ dist
 
 # Credentials
 credentials.txt
+
+# Editor configs
+.idea
