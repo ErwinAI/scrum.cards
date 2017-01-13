@@ -19,6 +19,3 @@ jspm_packages
 
 # Distributable
 dist
-
-# Credentials
-credentials.json
