@@ -1,8 +1,8 @@
 {
   "name": "scrum.cards",
   "version": "0.0.1",
-  "description": "Scrum.cards, simple online scrumcards, no nonsense.",
-  "main": "index.js",
+  "description": "Scrum.cards: simple online scrumcards.",
+  "homepage": "http://scrum.cards",
   "keywords": [
     "scrum",
     "cards",
@@ -19,15 +19,20 @@
     "gulp-cssnano": "^2.1.2",
     "gulp-if": "^2.0.2",
     "gulp-imagemin": "^3.1.1",
-	"gulp-open": "^2.0.0",
+    "gulp-open": "^2.0.0",
     "gulp-sass": "^3.0.0",
     "gulp-sass": "^3.0.0",
     "gulp-uglify": "^2.0.0",
     "gulp-useref": "^3.1.2",
+    "lighthouse": "^1.4.1",
     "run-sequence": "^1.2.2"
   },
   "engines": {
     "node": ">=4.4.5",
     "npm": ">=3.10.6"
+  }
+  "repository": { 
+	"type" : "git",
+	"url" : "https://github.com/incentro/scrum.cards.git"
   }
 }
