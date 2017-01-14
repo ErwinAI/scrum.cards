@@ -3,6 +3,7 @@
 let path = require('path');
 let webpack = require('webpack');
 let ExtractTextPlugin = require('extract-text-webpack-plugin');
+let OfflinePlugin = require('offline-plugin');
 
 let PROD = (process.env.NODE_ENV === 'production');
 
@@ -30,9 +31,11 @@ module.exports = function makeWebpackConfig() {
 
 	config.plugins = PROD ? [
 		extractStyles,
-		new webpack.optimize.UglifyJsPlugin({minimize: true})
+		new webpack.optimize.UglifyJsPlugin({minimize: true}),
+		new OfflinePlugin()
 	] : [
-		extractStyles
+		extractStyles,
+		new OfflinePlugin()
 	];
 
 	config.module = {
