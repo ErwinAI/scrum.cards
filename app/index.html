@@ -20,16 +20,8 @@
   <!-- must be at the end of body -->
   <!--build:js js/app.min.js -->
   <script src="js/app.js" async></script>
+  <script src="service-worker-registration.js" async></script>
   <!-- endbuild -->
-  <script>
-  if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('/js/sw.js').then(function(registration) {
-      console.log('ServiceWorker registration successful with scope: ', registration.scope);
-    }).catch(function(err) {
-      console.log('ServiceWorker registration failed: ', err);
-    });
-  }
-  </script>
 </body>
 
 </html>
