@@ -19,3 +19,5 @@ jspm_packages
 
 # Distributable
 dist
+scrum.cards_*.html
+test.scrum.cards_*.html
