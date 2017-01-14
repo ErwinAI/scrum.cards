@@ -1,7 +1,7 @@
 {
   "name": "scrum.cards",
   "version": "0.0.1",
-  "description": "Scrum.cards, simple online scrumcards",
+  "description": "Scrum.cards, simple online scrumcards, no nonsense.",
   "homepage": "http://scrum.cards/",
   "repository": {
     "type": "git",
