@@ -19,7 +19,14 @@ jspm_packages
 
 # Distributable
 dist
+
+# Lighthouse
 scrum.cards_*.html
 test.scrum.cards_*.html
+
+#IntelliJ
 .idea/
 app/app.iml
+
+#generated SW
+app/service-worker.js
