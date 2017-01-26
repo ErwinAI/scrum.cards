@@ -18,13 +18,6 @@
     "node": ">=4.4.5",
     "npm": ">=3.10.6"
   },
-  "scripts": {
-    "clean": "rimraf ./dist",
-    "copy": "mkdirp ./dist && ncp ./app/index.html ./dist/index.html/",
-    "prebuild": "npm run clean && npm run copy",
-    "build": "webpack --config webpack.config.js",
-    "build:live": "webpack-dev-server -d --port 3000 --content-base ./dist/ --config webpack.config.js"
-  },
   "keywords": [
     "scrum",
     "cards",
@@ -33,24 +26,25 @@
     "scrumcard"
   ],
   "devDependencies": {
-    "babel-core": "^6.21.0",
-    "babel-loader": "^6.2.10",
-    "babel-preset-es2015": "^6.18.0",
-    "css-loader": "^0.26.1",
-    "extract-text-webpack-plugin": "^2.0.0-beta.4",
-    "file-loader": "^0.9.0",
-    "image-webpack-loader": "^3.1.0",
+    "browser-sync": "^2.18.5",
+    "del": "^2.2.2",
+    "gulp": "^3.9.1",
+    "gulp-cache": "^0.4.5",
+    "gulp-cssnano": "^2.1.2",
+    "gulp-if": "^2.0.2",
+    "gulp-imagemin": "^3.1.1",
+    "gulp-open": "^2.0.0",
+    "gulp-prompt": "^0.2.0",
+    "gulp-sass": "^3.0.0",
+    "gulp-uglify": "^2.0.0",
+    "gulp-useref": "^3.1.2",
+    "gulp-util": "^3.0.8",
     "imagemin-cli": "^3.0.0",
     "lighthouse": "^1.4.1",
-    "mkdirp": "^0.5.1",
-    "ncp": "^2.0.0",
     "node-sass": "^4.2.0",
-    "offline-plugin": "^4.5.5",
     "path": "^0.12.7",
-    "rimraf": "^2.5.4",
-    "sass-loader": "^4.1.1",
-    "style-loader": "^0.13.1",
-    "webpack": "2.2.0-rc.4",
-    "webpack-dev-server": "^2.2.0-rc.0"
-  }
+    "run-sequence": "^1.2.2",
+    "vinyl-ftp": "^0.5.0",
+    "yargs": "^6.6.0"
+  },
 }
