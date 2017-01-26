@@ -20,11 +20,13 @@ jspm_packages
 # Distributable
 dist
 
-# Editor configs
-.idea
-
 # Lighthouse
-scrum.cards*.html
-test.scrum.cards*.html
-*.report.html
+scrum.cards_*.html
+test.scrum.cards_*.html
+
+#IntelliJ
+.idea/
 app/app.iml
+
+#generated SW
+app/service-worker.js

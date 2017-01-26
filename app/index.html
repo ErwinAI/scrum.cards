@@ -15,14 +15,16 @@
   <link rel="stylesheet" type="text/css" href="css/style.css">
   <!-- endbuild -->
 
-  <!--build:js js/main.min.js -->
-  <script src="js/main.js" async></script>
-  <!-- endbuild -->
-
 </head>
 
 <body>
 <main></main>
+  
+  <!-- must be at the end of body -->
+  <!--build:js js/main.min.js -->
+  <script src="js/main.js" async></script>
+  <script src="service-worker-registration.js" async></script>
+  <!-- endbuild -->
 </body>
 
 </html>

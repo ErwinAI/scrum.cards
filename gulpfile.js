@@ -11,7 +11,9 @@ var gulpUseref = require('gulp-useref');
 
 var browserSync = require('browser-sync').create();
 var del = require('del');
+var path = require('path');
 var runSequence = require('run-sequence');
+var swPrecache = require('sw-precache');
 
 
 /**
@@ -40,6 +42,18 @@ gulp.task('scss', function(){
 });
 
 /**
+* This task generates the service worker
+*/
+gulp.task('generate-sw', function(callback) {
+  var rootDir = 'app';
+
+  swPrecache.write(`${rootDir}/service-worker.js`, {
+    staticFileGlobs: [rootDir + '/**/*.{js,html,css,png,jpg,jpeg,gif,svg,ttf,woff}'],
+    stripPrefix: rootDir
+  }, callback);
+});
+
+/**
 * This task task activates browserSync
 */
 gulp.task('browserSync', function() {
@@ -56,6 +70,7 @@ gulp.task('browserSync', function() {
 gulp.task('watch', ['browserSync', 'scss'], function(){
   gulp.watch('app/scss/**/*.scss', ['scss']);
   gulp.watch('app/js/**/*.js', browserSync.reload); 
+  gulp.watch('app/*.js', browserSync.reload);
   gulp.watch('app/*.html', browserSync.reload);
 });
 
@@ -63,7 +78,7 @@ gulp.task('watch', ['browserSync', 'scss'], function(){
 * This task serves the app locally for easy local developing
 */
 gulp.task('serve', function (callback) {
-  runSequence(['scss','browserSync', 'watch'], callback)
+  runSequence(['scss','generate-sw','browserSync', 'watch'], callback)
 });
 
 
@@ -72,10 +87,10 @@ gulp.task('serve', function (callback) {
 * This task makes html/js/css ready to 'dist' folder. (concats, uglify and cssnano)
 */
 gulp.task('useref', function(){
-  return gulp.src(['app/*.html', 'app/*.json'])
+  return gulp.src(['app/*.html', 'app/*.json', 'app/*.js'])
     .pipe(gulpUseref())
-	  .pipe(gulpIf('app/js/*.js', gulpUglify()))
-	  .pipe(gulpIf('app/css/*.css', gulpCssnano()))
+	  .pipe(gulpIf('*.js', gulpUglify()))
+	  .pipe(gulpIf('*.css', gulpCssnano()))
     .pipe(gulp.dest('dist'))
 });
 
@@ -115,7 +130,7 @@ gulp.task('clean:cache', function (callback) {
 * This task runs all the above tasks to create the distributable app in 'dist' folder
 */
 gulp.task('dist', function (callback) {
-  runSequence('clean:dist',['scss', 'useref', 'images', 'fonts'],callback)
+  runSequence('clean:dist','generate-sw',['scss', 'useref', 'images', 'fonts'],callback)
 });
 
 /**
