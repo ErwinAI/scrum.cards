@@ -87,7 +87,7 @@ gulp.task('serve', function (callback) {
 * This task makes html/js/css ready to 'dist' folder. (concats, uglify and cssnano)
 */
 gulp.task('useref', function(){
-  return gulp.src('app/*.html')
+  return gulp.src(['app/*.html', 'app/*.json', 'app/*.js'])
     .pipe(gulpUseref())
 	  .pipe(gulpIf('*.js', gulpUglify()))
 	  .pipe(gulpIf('*.css', gulpCssnano()))
