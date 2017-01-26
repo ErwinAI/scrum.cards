@@ -111,6 +111,7 @@ gulp.task('fonts', function() {
   .pipe(gulp.dest('dist/fonts'))
 });
 
+
 /**
 * This task cleans 'dist' folder
 */

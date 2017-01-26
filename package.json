@@ -1,8 +1,23 @@
 {
   "name": "scrum.cards",
   "version": "0.0.1",
-  "description": "Scrum.cards: simple online scrumcards.",
-  "homepage": "http://scrum.cards",
+  "description": "Scrum.cards, simple online scrumcards.",
+  "homepage": "http://scrum.cards/",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/incentro/scrum.cards.git"
+  },
+  "bugs": "https://github.com/incentro/scrum.cards/issues",
+  "license": "",
+  "author": "Erwin Lengkeek",
+  "contributors": [
+    "Pieter Bogaerts"
+  ],
+  "main": "index.js",
+  "engines": {
+    "node": ">=4.4.5",
+    "npm": ">=3.10.6"
+  },
   "keywords": [
     "scrum",
     "cards",
@@ -10,7 +25,6 @@
     "scrumcards",
     "scrumcard"
   ],
-  "author": "Erwin Lengkeek",
   "devDependencies": {
     "browser-sync": "^2.18.5",
     "del": "^2.2.2",
@@ -23,17 +37,13 @@
     "gulp-sass": "^3.0.0",
     "gulp-uglify": "^2.0.0",
     "gulp-useref": "^3.1.2",
+    "gulp-util": "^3.0.8",
+    "imagemin-cli": "^3.0.0",
     "lighthouse": "^1.4.1",
     "path": "^0.12.7",
     "run-sequence": "^1.2.2",
-    "sw-precache": "^4.3.0"
-  },
-  "engines": {
-    "node": ">=6.9.4",
-    "npm": ">=3.10.6"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/incentro/scrum.cards.git"
+    "sw-precache": "^4.3.0",
+    "node-sass": "^4.2.0",
+    "yargs": "^6.6.0"
   }
 }
