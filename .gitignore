@@ -21,3 +21,5 @@ jspm_packages
 dist
 scrum.cards_*.html
 test.scrum.cards_*.html
+.idea/
+app/app.iml
