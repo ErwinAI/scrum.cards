@@ -129,7 +129,7 @@ gulp.task('clean:cache', function (callback) {
 * This task runs all the above tasks to create the distributable app in 'dist' folder
 */
 gulp.task('dist', function (callback) {
-  runSequence('clean:dist',['scss', 'useref', 'images', 'fonts'],callback)
+  runSequence('clean:dist','generate-sw',['scss', 'useref', 'images', 'fonts'],callback)
 });
 
 /**
