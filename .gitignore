@@ -26,3 +26,5 @@ dist
 # Lighthouse
 scrum.cards*.html
 test.scrum.cards*.html
+*.report.html
+app/app.iml
