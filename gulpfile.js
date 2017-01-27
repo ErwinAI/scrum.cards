@@ -15,6 +15,9 @@ var path = require('path');
 var runSequence = require('run-sequence');
 var swPrecache = require('sw-precache');
 
+//switch for creating sw in dist folder
+var swSwitchToDist = false;
+
 
 /**
 * Gulpfile for scrum.cards project
@@ -45,7 +48,8 @@ gulp.task('scss', function(){
 * This task generates the service worker
 */
 gulp.task('generate-sw', function(callback) {
-  var rootDir = 'app';
+  let rootDir = swSwitchToDist ? 'dist' : 'app';
+  console.log("ServiceWorker generated in '" + rootDir + "' folder.");
 
   swPrecache.write(`${rootDir}/service-worker.js`, {
     staticFileGlobs: [rootDir + '/**/*.{js,html,css,png,jpg,jpeg,gif,svg,ttf,woff}'],
@@ -69,7 +73,7 @@ gulp.task('browserSync', function() {
 */
 gulp.task('watch', ['browserSync', 'scss'], function(){
   gulp.watch('app/scss/**/*.scss', ['scss']);
-  gulp.watch('app/js/**/*.js', browserSync.reload); 
+  gulp.watch('app/js/**/*.js', browserSync.reload);
   gulp.watch('app/*.js', browserSync.reload);
   gulp.watch('app/*.html', browserSync.reload);
 });
@@ -81,16 +85,15 @@ gulp.task('serve', function (callback) {
   runSequence(['scss','generate-sw','browserSync', 'watch'], callback)
 });
 
-
-
 /**
 * This task makes html/js/css ready to 'dist' folder. (concats, uglify and cssnano)
 */
 gulp.task('useref', function(){
-  return gulp.src(['app/*.html', 'app/*.json', 'app/*.js'])
+  //copy html files, json files and the service-worker-registrator too
+  return gulp.src(['app/*.html', 'app/*.json', 'app/service-worker-registration.js'])
     .pipe(gulpUseref())
-	  .pipe(gulpIf('*.js', gulpUglify()))
-	  .pipe(gulpIf('*.css', gulpCssnano()))
+	  .pipe(gulpIf('*.js', gulpUglify())) //copy all js over and uglify
+	  .pipe(gulpIf('*.css', gulpCssnano())) //copy all css over and nano it
     .pipe(gulp.dest('dist'))
 });
 
@@ -130,6 +133,7 @@ gulp.task('clean:cache', function (callback) {
 * This task runs all the above tasks to create the distributable app in 'dist' folder
 */
 gulp.task('dist', function (callback) {
+  swSwitchToDist=true;
   runSequence('clean:dist','generate-sw',['scss', 'useref', 'images', 'fonts'],callback)
 });
 
