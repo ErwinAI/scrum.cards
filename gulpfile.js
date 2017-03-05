@@ -134,7 +134,7 @@ gulp.task('clean:cache', function (callback) {
 */
 gulp.task('dist', function (callback) {
   swSwitchToDist=true;
-  runSequence('clean:dist','generate-sw',['scss', 'useref', 'images', 'fonts'],callback)
+  runSequence('clean:dist',['scss', 'useref', 'images', 'fonts'],'generate-sw',callback)
 });
 
 /**
