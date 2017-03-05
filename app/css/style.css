@@ -98,3 +98,54 @@ h1, h2, h3, h4, h5, h6 {
 
 a {
   color: #454955; }
+
+.toast-view {
+  background-color: #0D0A0B;
+  border-radius: 3px;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.12), 0 2px 4px rgba(0, 0, 0, 0.24);
+  color: #F3EFF5;
+  line-height: 20px;
+  margin-top: 8px;
+  padding: 16px;
+  transition: opacity 200ms, transform 300ms cubic-bezier(0.165, 0.84, 0.44, 1);
+  white-space: nowrap;
+  opacity: 0;
+  transform: translateY(20px);
+  will-change: transform;
+  position: fixed;
+  left: 16px;
+  bottom: 16px; }
+
+.toast-view--visible {
+  opacity: 1;
+  transform: translateY(0); }
+
+.loader {
+  left: 50%;
+  top: 50%;
+  position: fixed;
+  transform: translate(-50%, -50%); }
+  .loader #spinner {
+    box-sizing: border-box;
+    stroke: #72B01D;
+    stroke-width: 3px;
+    transform-origin: 50%;
+    animation: line 1.6s cubic-bezier(0.4, 0, 0.2, 1) infinite, rotate 1.6s linear infinite; }
+
+@keyframes rotate {
+  from {
+    transform: rotate(0); }
+  to {
+    transform: rotate(450deg); } }
+
+@keyframes line {
+  0% {
+    stroke-dasharray: 2, 85.964;
+    transform: rotate(0); }
+  50% {
+    stroke-dasharray: 65.973, 21.9911;
+    stroke-dashoffset: 0; }
+  100% {
+    stroke-dasharray: 2, 85.964;
+    stroke-dashoffset: -65.973;
+    transform: rotate(90deg); } }
