@@ -48,20 +48,20 @@ function getToaster() {
 
 class Toaster {
 
-  constructor() {
-    this.view = document.querySelector('.js-toast-view');
-    this.hideTimeout = 0;
-  }
+	constructor() {
+		this.view = document.querySelector('.js-toast-view');
+		this.hideTimeout = 0;
+	}
 
-  toast(message) {
-    this.view.textContent = message;
-    this.view.classList.add('toast-view--visible');
+	toast(message) {
+		this.view.textContent = message;
+		this.view.classList.add('toast-view--visible');
 
-    clearTimeout(this.hideTimeout);
-	this.hideTimeout = setTimeout(function(){ this.hide(); }, 3000);
-  }
+		clearTimeout(this.hideTimeout);
+		this.hideTimeout = setTimeout(function(){ this.hide(); }, 3000);
+	}
 
-  hide() {
-    this.view.classList.remove('toast-view--visible');
-  }
+	hide() {
+		this.view.classList.remove('toast-view--visible');
+	}
 }
