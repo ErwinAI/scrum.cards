@@ -14,36 +14,37 @@
 'use strict';
 
 if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('service-worker.js').then(function(reg) {
-    reg.onupdatefound = function() {var installingWorker = reg.installing;
-      installingWorker.onstatechange = function() {
-        switch (installingWorker.state) {
-          case 'installed':
-            if (navigator.serviceWorker.controller) {
-			  getToaster().toast('Website updated. Refresh or restart for the new version.');
-            } else {
-			  getToaster().toast('This website now works offline.');
-            }
-            break;
-          case 'redundant':
-            console.error('The installing service worker became redundant.');
-            break;
-        }
-      };
-    };
-  }).catch(function(e) {
-    console.error('Error during service worker registration:', e);
-  });
+	navigator.serviceWorker.register('service-worker.js').then(function (reg) {
+		reg.onupdatefound = function () {
+			var installingWorker = reg.installing;
+			installingWorker.onstatechange = function () {
+				switch (installingWorker.state) {
+					case 'installed':
+						if (navigator.serviceWorker.controller) {
+							getToaster().toast('Website updated. Refresh or restart for the new version.');
+						} else {
+							getToaster().toast('This website now works offline.');
+						}
+						break;
+					case 'redundant':
+						console.error('The installing service worker became redundant.');
+						break;
+				}
+			};
+		};
+	}).catch(function (e) {
+		console.error('Error during service worker registration:', e);
+	});
 }
 
 function getToaster() {
-  if (typeof window.ToasterInstance_ !== 'undefined') {
-    return window.ToasterInstance_;
-  }
+	if (typeof window.ToasterInstance_ !== 'undefined') {
+		return window.ToasterInstance_;
+	}
 
-  window.ToasterInstance_ = new Toaster();
+	window.ToasterInstance_ = new Toaster();
 
-  return window.ToasterInstance_;
+	return window.ToasterInstance_;
 }
 
 class Toaster {
@@ -58,7 +59,9 @@ class Toaster {
 		this.view.classList.add('toast-view--visible');
 
 		clearTimeout(this.hideTimeout);
-		this.hideTimeout = setTimeout(function(){ this.hide(); }, 3000);
+		this.hideTimeout = setTimeout(() => {
+			this.hide();
+		}, 3000);
 	}
 
 	hide() {
