@@ -1,5 +1,8 @@
-@import 'components/_colors';
+@import 'statics/_colors';
+@import 'statics/_breakpoints';
+@import 'statics/_the-flex-grid';
 @import 'components/_header';
 @import 'components/_main';
 @import 'components/_core';
 @import 'components/_toast';
+@import 'components/_card';
