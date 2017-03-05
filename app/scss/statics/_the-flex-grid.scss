@@ -132,13 +132,11 @@ $theflexgrid-silent-only: false !default;
 	margin: 0 auto;
 	max-width: $theflexgrid-maxwidth;
 	overflow: hidden;
-	height: 100%;
 }
 
 %row {
 	display: flex;
 	flex-wrap: wrap;
-	height: 25%;
 	margin: 0  -#{$theflexgrid-gutter/2} 0 -#{$theflexgrid-gutter/2};
 
 	& > * {
@@ -148,7 +146,7 @@ $theflexgrid-silent-only: false !default;
 	}
 
 	&:last-child {
-		margin-bottom: -#{$theflexgrid-gutter};
+		margin-bottom: 0;
 	}
 }
 
