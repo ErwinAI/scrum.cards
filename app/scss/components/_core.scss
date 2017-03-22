@@ -7,9 +7,8 @@ html, body {
 	margin: 0;
 	height: 100%;
 	width: 100%;
-	font-family: 'Open Sans Light', 'Open Sans', sans-serif;
+	font-family: 'Open Sans', sans-serif;
 	font-weight: 400;
-	color: $secondary;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 }
@@ -43,7 +42,7 @@ body:after {
 }
 
 h1, h2, h3, h4, h5, h6 {
-	font-family: "Raleway Light", Raleway, serif;
+	font-family: 'Open Sans', sans-serif;
 }
 
 a {

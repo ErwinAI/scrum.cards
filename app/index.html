@@ -11,34 +11,41 @@
 	<link rel="icon" href="/images/homescreen/96.png" type="image/x-icon">
 	<link rel="manifest" href="/manifest.json">
 
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans|Russo+One" rel="stylesheet">
+
 	<script
 		src="https://code.jquery.com/jquery-3.1.1.slim.min.js"
 		integrity="sha256-/SIrNqv8h6QGKDuNoLGA4iret+kyesCkHGzVUUV0shc="
 		crossorigin="anonymous"></script>
 
-  <!--build:css css/style.min.css -->
-  <link rel="stylesheet" type="text/css" href="css/style.css">
-  <!-- endbuild -->
+	<!--build:css css/style.min.css -->
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<!-- endbuild -->
 
 </head>
 
 <body>
 
   <header class="header">
-	<h1 class="header_title">Scrum.Cards</h1>
+	  <h1 class="header_title">SCRUM.CARDS</h1>
+
+	  <label class="switch">
+		  <input type="checkbox" id="colorToggle">
+		  <div class="slider round"></div>
+	  </label>
   </header>
 
   <main class="main">
 	  <!--Fullscreen value-->
 	  <div class="grid" id="detail-grid" style="display:none;">
-		  <div class="row row-equal">
-			  <div class="col-12">
+		  <div class="row">
+			  <div class="col-large-3 col-medium-0 col-small-0"></div>
+			  <div class="col-large-6 col-medium-12 col-small-12">
 				  <div class="content">
-					  <div class="card">
-						  <h1 id="detail-grid-value"></h1>
-					  </div>
+					  <div class="card detailed"></div>
 				  </div>
 			  </div>
+			  <div class="col-large-3 col-medium-0 col-small-0"></div>
 		  </div>
 	  </div>
 
@@ -46,99 +53,66 @@
 		  <div class="row row-equal">
 			  <div class="col-3">
 				  <div class="content">
-					  <div class="card">
-						  <h1>0</h1>
-					  </div>
+					  <div class="card" id="card-h"></div>
 				  </div>
 			  </div>
 			  <div class="col-3">
 				  <div class="content">
-					  <div class="card">
-						  <h1>&frac12;</h1>
-					  </div>
+					  <div class="card" id="card-1"></div>
 				  </div>
 			  </div>
 			  <div class="col-3">
 				  <div class="content">
-					  <div class="card">
-						  <h1>1</h1>
-					  </div>
+					  <div class="card" id="card-2"></div>
 				  </div>
 			  </div>
 			  <div class="col-3">
 				  <div class="content">
-					  <div class="card">
-						  <h1>2</h1>
-					  </div>
+					  <div class="card" id="card-3"></div>
 				  </div>
 			  </div>
 		  </div>
 		  <div class="row row-equal">
 			  <div class="col-3">
 				  <div class="content">
-					  <div class="card">
-						  <h1>3</h1>
-					  </div>
+					  <div class="card" id="card-5"></div>
 				  </div>
 			  </div>
 			  <div class="col-3">
 				  <div class="content">
-					  <div class="card">
-						  <h1>5</h1>
-					  </div>
+					  <div class="card" id="card-8"></div>
 				  </div>
 			  </div>
 			  <div class="col-3">
 				  <div class="content">
-					  <div class="card">
-						  <h1>8</h1>
-					  </div>
+					  <div class="card" id="card-13"></div>
 				  </div>
 			  </div>
 			  <div class="col-3">
 				  <div class="content">
-					  <div class="card">
-						  <h1>13</h1>
-					  </div>
+					  <div class="card" id="card-20"></div>
 				  </div>
 			  </div>
 		  </div>
 		  <div class="row row-equal">
-			  <div class="col-4">
+			  <div class="col-3">
 				  <div class="content">
-					  <div class="card">
-						  <h1>20</h1>
-					  </div>
+					  <div class="card" id="card-40"></div>
 				  </div>
 			  </div>
-			  <div class="col-4">
+			  <div class="col-3">
 				  <div class="content">
-					  <div class="card">
-						  <h1>40</h1>
-					  </div>
+					  <div class="card" id="card-100"></div>
 				  </div>
 			  </div>
-			  <div class="col-4">
+			  <div class="col-3">
 				  <div class="content">
-					  <div class="card">
-						  <h1>100</h1>
-					  </div>
+					  <div class="card" id="card-q"></div>
 				  </div>
 			  </div>
-		  </div>
-		  <div class="row row-equal">
-			  <div class="col-6">
+			  <div class="col-3">
 				  <div class="content">
-					  <div class="card">
-						  <h1>?</h1>
-					  </div>
-				  </div>
-			  </div>
-			  <div class="col-6">
-				  <div class="content">
-					  <div class="card">
-						  <h1>Break</h1>
-					  </div>
+					  <div class="card" id="card-r"></div>
 				  </div>
 			  </div>
 		  </div>
