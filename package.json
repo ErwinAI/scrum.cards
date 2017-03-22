@@ -45,6 +45,7 @@
     "node-sass": "^4.2.0",
     "path": "^0.12.7",
     "run-sequence": "^1.2.2",
-    "sw-precache": "^4.3.0"
+    "sw-precache": "^4.3.0",
+    "the-flex-grid": "^1.5.0"
   }
 }

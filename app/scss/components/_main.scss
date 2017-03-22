@@ -6,7 +6,7 @@
 	-webkit-overflow-scrolling: touch;
 }
 
-@media(min-width: 600px) {
+@media #{$breakpoint-medium} {
 	.main {
 		padding-top: 160px;
 	}
