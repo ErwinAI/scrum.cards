@@ -31,3 +31,6 @@ app/app.iml
 #generated SW
 app/service-worker.js
 dist/service-worker.js
+
+#generated css
+app/css/style.css
