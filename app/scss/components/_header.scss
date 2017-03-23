@@ -28,7 +28,7 @@
 	flex: 1;
 }
 
-@media(min-width: 600px) {
+@media #{$breakpoint-medium} {
 	.header {
 		padding: 16px 32px 0 24px;
 		height: 144px;
@@ -44,7 +44,7 @@
 	}
 }
 
-@media(min-width: 960px) {
+@media #{$breakpoint-large} {
 	.header_title {
 		width: 888px;
 		-webkit-margin-before: 0;
