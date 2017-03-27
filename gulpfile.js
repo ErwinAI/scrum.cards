@@ -1,5 +1,6 @@
 /** Packages **/
 var gulp = require('gulp');
+var babel = require('gulp-babel');
 var gulpCache = require('gulp-cache');
 var gulpCssnano = require('gulp-cssnano');
 var gulpIf = require('gulp-if');
@@ -92,6 +93,7 @@ gulp.task('useref', function(){
   //copy html files, json files and the service-worker-registrator too
   return gulp.src(['app/*.html', 'app/*.json', 'app/service-worker-registration.js'])
     .pipe(gulpUseref())
+    .pipe(gulpIf('*.js', babel({presets: ['es2015']})))
 	  .pipe(gulpIf('*.js', gulpUglify())) //copy all js over and uglify
 	  .pipe(gulpIf('*.css', gulpCssnano())) //copy all css over and nano it
     .pipe(gulp.dest('dist'))
@@ -134,7 +136,7 @@ gulp.task('clean:cache', function (callback) {
 */
 gulp.task('dist', function (callback) {
   swSwitchToDist=true;
-  runSequence('clean:dist','generate-sw',['scss', 'useref', 'images', 'fonts'],callback)
+  runSequence('clean:dist', 'scss', ['useref', 'images', 'fonts'], 'generate-sw', callback)
 });
 
 /**

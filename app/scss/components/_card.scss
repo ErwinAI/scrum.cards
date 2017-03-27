@@ -1,0 +1,30 @@
+.card {
+	position: relative;
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	background: $white;
+	border-radius: 2px;
+	box-shadow: 0 2px 2px 0 rgba(0,0,0,.14),
+	0 3px 1px -2px rgba(0,0,0,.2),
+	0 1px 5px 0 rgba(0,0,0,.12);
+	text-align: center;
+	height: 100%;
+
+	perspective: 800px;
+	transform-style: preserve-3d;
+	transition: transform 0.5s;
+}
+
+.flipped {
+	transform: rotateY(180deg);
+	backface-visibility: hidden;
+}
+
+.flippedback {
+	transform: rotateY(-180deg);
+	backface-visibility: hidden;
+}
+
+.card-image {
+	width: 100%;
+}

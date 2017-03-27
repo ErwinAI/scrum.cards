@@ -11,24 +11,122 @@
 	<link rel="icon" href="/images/homescreen/96.png" type="image/x-icon">
 	<link rel="manifest" href="/manifest.json">
 
-  <!--build:css css/style.min.css -->
-  <link rel="stylesheet" type="text/css" href="css/style.css">
-  <!-- endbuild -->
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans|Russo+One" rel="stylesheet">
+
+	<script
+		src="https://code.jquery.com/jquery-3.1.1.slim.min.js"
+		integrity="sha256-/SIrNqv8h6QGKDuNoLGA4iret+kyesCkHGzVUUV0shc="
+		crossorigin="anonymous"></script>
+
+	<!--build:css css/style.min.css -->
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<!-- endbuild -->
 
 </head>
 
 <body>
 
   <header class="header">
-	<h1 class="header_title">Scrum.Cards</h1>
+	  <h1 class="header_title">SCRUM.CARDS</h1>
+
+	  <label class="switch">
+		  <input type="checkbox" id="colorToggle">
+		  <div class="slider round"></div>
+	  </label>
   </header>
 
-  <main class="main"></main>
+  <main class="main">
+	  <!--Fullscreen value-->
+	  <div class="grid" id="detail-grid" style="display:none;">
+		  <div class="row">
+			  <div class="col-large-3 col-medium-0 col-small-0"></div>
+			  <div class="col-large-6 col-medium-12 col-small-12">
+				  <div class="content">
+					  <div class="card detailed"></div>
+				  </div>
+			  </div>
+			  <div class="col-large-3 col-medium-0 col-small-0"></div>
+		  </div>
+	  </div>
 
+	  <div class="grid" id="general-grid">
+		  <div class="row row-equal">
+			  <div class="col-3">
+				  <div class="content">
+					  <div class="card" id="card-h"></div>
+				  </div>
+			  </div>
+			  <div class="col-3">
+				  <div class="content">
+					  <div class="card" id="card-1"></div>
+				  </div>
+			  </div>
+			  <div class="col-3">
+				  <div class="content">
+					  <div class="card" id="card-2"></div>
+				  </div>
+			  </div>
+			  <div class="col-3">
+				  <div class="content">
+					  <div class="card" id="card-3"></div>
+				  </div>
+			  </div>
+		  </div>
+		  <div class="row row-equal">
+			  <div class="col-3">
+				  <div class="content">
+					  <div class="card" id="card-5"></div>
+				  </div>
+			  </div>
+			  <div class="col-3">
+				  <div class="content">
+					  <div class="card" id="card-8"></div>
+				  </div>
+			  </div>
+			  <div class="col-3">
+				  <div class="content">
+					  <div class="card" id="card-13"></div>
+				  </div>
+			  </div>
+			  <div class="col-3">
+				  <div class="content">
+					  <div class="card" id="card-20"></div>
+				  </div>
+			  </div>
+		  </div>
+		  <div class="row row-equal">
+			  <div class="col-3">
+				  <div class="content">
+					  <div class="card" id="card-40"></div>
+				  </div>
+			  </div>
+			  <div class="col-3">
+				  <div class="content">
+					  <div class="card" id="card-100"></div>
+				  </div>
+			  </div>
+			  <div class="col-3">
+				  <div class="content">
+					  <div class="card" id="card-q"></div>
+				  </div>
+			  </div>
+			  <div class="col-3">
+				  <div class="content">
+					  <div class="card" id="card-r"></div>
+				  </div>
+			  </div>
+		  </div>
+	  </div>
+
+
+  </main>
+
+  <aside class="toast-view js-toast-view"></aside>
+
+  <script src="service-worker-registration.js" async></script>
   <!-- must be at the end of body -->
   <!--build:js js/main.min.js -->
   <script src="js/main.js" async></script>
-  <script src="service-worker-registration.js" async></script>
   <!-- endbuild -->
 </body>
 
