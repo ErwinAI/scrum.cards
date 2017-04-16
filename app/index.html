@@ -10,29 +10,12 @@
 
 	<link rel="icon" href="/images/homescreen/96.png" type="image/x-icon">
 	<link rel="manifest" href="/manifest.json">
-
-	<link href="https://fonts.googleapis.com/css?family=Open+Sans|Russo+One" rel="stylesheet">
-
-	<script
-		src="https://code.jquery.com/jquery-3.1.1.slim.min.js"
-		integrity="sha256-/SIrNqv8h6QGKDuNoLGA4iret+kyesCkHGzVUUV0shc="
-		crossorigin="anonymous"></script>
-
-	<!--build:css css/style.min.css -->
-	<link rel="stylesheet" type="text/css" href="css/style.css">
-	<!-- endbuild -->
-
 </head>
 
 <body>
 
   <header class="header">
 	  <h1 class="header_title">SCRUM.CARDS</h1>
-
-	  <label class="switch">
-		  <input type="checkbox" id="colorToggle">
-		  <div class="slider round"></div>
-	  </label>
   </header>
 
   <main class="main">
@@ -123,8 +106,17 @@
 
   <aside class="toast-view js-toast-view"></aside>
 
+  <!-- css below fold -->
+  <!--build:css css/style.min.css -->
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+  <!-- endbuild -->
+
+  <!-- js must be at the end of body -->
+  <script
+	  src="https://code.jquery.com/jquery-3.1.1.slim.min.js"
+	  integrity="sha256-/SIrNqv8h6QGKDuNoLGA4iret+kyesCkHGzVUUV0shc="
+	  crossorigin="anonymous" async></script>
   <script src="service-worker-registration.js" async></script>
-  <!-- must be at the end of body -->
   <!--build:js js/main.min.js -->
   <script src="js/main.js" async></script>
   <!-- endbuild -->
