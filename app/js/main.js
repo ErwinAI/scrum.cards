@@ -1,9 +1,27 @@
 "use strict";
 
+//defer loading css
+var cb = function() {
+	let l = document.createElement('link'); l.rel = 'stylesheet';
+	l.href = 'https://fonts.googleapis.com/css?family=Open+Sans|Russo+One';
+	let h = document.getElementsByTagName('head')[0]; h.parentNode.insertBefore(l, h);
+};
+
+var raf = requestAnimationFrame || mozRequestAnimationFrame ||
+	webkitRequestAnimationFrame || msRequestAnimationFrame;
+
+if (raf) {
+	raf(cb);
+} else {
+	window.addEventListener('load', cb);
+}
+
+//manage card switches
 var _cardImageExtension = 'png';
 var _pathToCardImages = '/images/cards/';
 
 insertNewCards(true, true);
+
 
 function removeExistingCards() {
 	$('.card-image').each(function() {
@@ -89,21 +107,6 @@ $('.card').click(function(e) {
 				clickedElement.removeClass("flipped");
 			}
 		});
-	}
-});
-
-$('#colorToggle').change(function(e) {
-	console.log("activated toggle");
-
-	let headerTitle = $('.header_title');
-
-	if (!this.checked) {
-		headerTitle.removeClass("header--reversed");
-
-		insertNewCards(true, true); //make 'em orange
-	} else {
-		headerTitle.addClass("header--reversed");
-		insertNewCards(false, true); //make 'em blue
 	}
 });
 
